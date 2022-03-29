@@ -188,9 +188,9 @@ export default `
         });
 
         rendition.on("selected", function (cfiRange, contents) {
-          rendition.annotations.add("highlight", cfiRange, {}, (e) => {
-            console.log("highlight clicked", e.target);
-          });
+          // rendition.annotations.add("highlight", cfiRange, {}, (e) => {
+          //   console.log("highlight clicked", e.target);
+          // });
           contents.window.getSelection().removeAllRanges();
 
           book.getRange(cfiRange).then(function (range) {
