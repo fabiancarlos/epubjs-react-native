@@ -191,7 +191,7 @@ export default `
           // rendition.annotations.add("highlight", cfiRange, {}, (e) => {
           //   console.log("highlight clicked", e.target);
           // });
-          contents.window.getSelection().removeAllRanges();
+          // contents.window.getSelection().removeAllRanges();
 
           book.getRange(cfiRange).then(function (range) {
             if (range) {
