@@ -67,7 +67,7 @@ export default `
               totalLocations: book.locations.total,
               currentLocation: currentLocation,
               progress: book.locations.percentageFromCfi(currentLocation.start.cfi),
-              pageList: book.pagelist,
+              pageList: book.pageList,
             }));
           });
 
