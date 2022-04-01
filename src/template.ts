@@ -12,16 +12,17 @@ export default `
       body {
         margin: 0;
 
-        -webkit-touch-callout: none !important;
-        -webkit-user-select: none !important;
-        -khtml-user-select: none !important;
-        -moz-user-select: none !important;
-        -ms-user-select: none !important;
-        user-select: none !important;
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        -khtml-user-select: none;
+        -moz-user-select: none;
+        -ms-user-select: none;
+        user-select: none;
       }
 
       '::selection': {
-        background: 'lightskyblue',
+        background: 'red',
+        color:#FFFFFF;
       }
 
       #viewer {
