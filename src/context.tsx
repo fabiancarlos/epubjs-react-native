@@ -47,7 +47,7 @@ type BookPayload = {
   [Types.SET_CURRENT_LOCATION]: Location;
   [Types.SET_PROGRESS]: number;
   [Types.SET_LOCATIONS]: ePubCfi[];
-  [Types.SET_PAGE_LIST]: ePubCfi[];
+  [Types.SET_PAGE_LIST]: string;
   [Types.SET_IS_LOADING]: boolean;
   [Types.SET_SEARCH_RESULTS]: SearchResult[];
 };
@@ -65,7 +65,7 @@ type InitialState = {
   currentLocation: Location | null;
   progress: number;
   locations: ePubCfi[];
-  pageList: ePubCfi[];
+  pageList: string;
   isLoading: boolean;
   searchResults: SearchResult[];
 };
@@ -190,7 +190,7 @@ export interface ReaderContextProps {
   setTotalLocations: (totalLocations: number) => void;
   setCurrentLocation: (location: Location) => void;
   setProgress: (progress: number) => void;
-  setPageList: (pageList: ePubCfi[]) => void;
+  setPageList: (pageList: string) => void;
   setLocations: (locations: ePubCfi[]) => void;
   setIsLoading: (isLoading: boolean) => void;
 
@@ -417,7 +417,7 @@ const ReaderProvider: React.FC = ({ children }) => {
     dispatch({ type: Types.SET_PROGRESS, payload: progress });
   }
 
-  function setPageList(pageList: ePubCfi[]) {
+  function setPageList(pageList: string) {
     dispatch({ type: Types.SET_PAGE_LIST, payload: pageList });
   }
 
