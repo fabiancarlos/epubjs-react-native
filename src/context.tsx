@@ -107,6 +107,7 @@ const initialState: InitialState = {
   currentLocation: null,
   progress: 0,
   locations: [],
+  pageList: '',
   isLoading: false,
   searchResults: [],
 };
@@ -543,6 +544,7 @@ const ReaderProvider: React.FC = ({ children }) => {
         currentLocation: state.currentLocation,
         progress: state.progress,
         locations: state.locations,
+        pageList: state.pageList,
         isLoading: state.isLoading,
 
         searchResults: state.searchResults,
