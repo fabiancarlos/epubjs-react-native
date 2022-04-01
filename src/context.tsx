@@ -309,6 +309,8 @@ export interface ReaderContextProps {
 
   locations: ePubCfi[];
 
+  pageList: string;
+
   /**
    * Indicates if the book is loading
    * @returns {boolean} {@link boolean}
@@ -359,6 +361,7 @@ const ReaderContext = createContext<ReaderContextProps>({
   currentLocation: null,
   progress: 0,
   locations: [],
+  pageList: '',
   isLoading: false,
 
   searchResults: [],
