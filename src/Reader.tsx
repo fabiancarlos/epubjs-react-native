@@ -47,6 +47,7 @@ export function Reader({
     setTotalLocations,
     setCurrentLocation,
     setProgress,
+    setPageList,
     setLocations,
     setAtStart,
     setAtEnd,
@@ -97,17 +98,18 @@ export function Reader({
     }
 
     if (type === 'onReady') {
-      const { totalLocations, currentLocation, progress } = parsedEvent;
+      const { totalLocations, currentLocation, progress, pageList } = parsedEvent;
       setIsLoading(false);
       setTotalLocations(totalLocations);
       setCurrentLocation(currentLocation);
       setProgress(progress);
+      setPageList(pageList);
 
       if (initialLocation) {
         goToLocation(initialLocation);
       }
 
-      return onReady(totalLocations, currentLocation, progress);
+      return onReady(totalLocations, currentLocation, progress, pageList);
     }
 
     if (type === 'onDisplayError') {

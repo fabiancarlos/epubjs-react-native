@@ -31,6 +31,7 @@ enum Types {
   SET_CURRENT_LOCATION = 'SET_CURRENT_LOCATION',
   SET_PROGRESS = 'SET_PROGRESS',
   SET_LOCATIONS = 'SET_LOCATIONS',
+  SET_PAGE_LIST = 'SET_PAGE_LIST',
   SET_IS_LOADING = 'SET_IS_LOADING',
   SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS',
 }
@@ -46,6 +47,7 @@ type BookPayload = {
   [Types.SET_CURRENT_LOCATION]: Location;
   [Types.SET_PROGRESS]: number;
   [Types.SET_LOCATIONS]: ePubCfi[];
+  [Types.SET_PAGE_LIST]: ePubCfi[];
   [Types.SET_IS_LOADING]: boolean;
   [Types.SET_SEARCH_RESULTS]: SearchResult[];
 };
@@ -63,6 +65,7 @@ type InitialState = {
   currentLocation: Location | null;
   progress: number;
   locations: ePubCfi[];
+  pageList: ePubCfi[];
   isLoading: boolean;
   searchResults: SearchResult[];
 };
@@ -160,6 +163,11 @@ function bookReducer(state: InitialState, action: BookActions): InitialState {
         ...state,
         locations: action.payload,
       };
+    case Types.SET_PAGE_LIST:
+      return {
+        ...state,
+        pageList: action.payload,
+      };
     case Types.SET_IS_LOADING:
       return {
         ...state,
@@ -182,6 +190,7 @@ export interface ReaderContextProps {
   setTotalLocations: (totalLocations: number) => void;
   setCurrentLocation: (location: Location) => void;
   setProgress: (progress: number) => void;
+  setPageList: (pageList: ePubCfi[]) => void;
   setLocations: (locations: ePubCfi[]) => void;
   setIsLoading: (isLoading: boolean) => void;
 
@@ -322,6 +331,7 @@ const ReaderContext = createContext<ReaderContextProps>({
   setTotalLocations: () => {},
   setCurrentLocation: () => {},
   setProgress: () => {},
+  setPageList: () => {},
   setLocations: () => {},
   setIsLoading: () => {},
 
@@ -405,6 +415,10 @@ const ReaderProvider: React.FC = ({ children }) => {
 
   function setProgress(progress: number) {
     dispatch({ type: Types.SET_PROGRESS, payload: progress });
+  }
+
+  function setPageList(pageList: ePubCfi[]) {
+    dispatch({ type: Types.SET_PAGE_LIST, payload: pageList });
   }
 
   function setLocations(locations: ePubCfi[]) {
@@ -499,6 +513,7 @@ const ReaderProvider: React.FC = ({ children }) => {
         setCurrentLocation,
         setProgress,
         setLocations,
+        setPageList,
         setIsLoading,
 
         goToLocation,
