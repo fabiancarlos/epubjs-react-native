@@ -21,8 +21,10 @@ export default `
       }
 
       .marked {
-        fill: 'blue';
-        background: 'pink',
+        color: '#b45';
+        background-color: '#3db';
+        fill: 'blue' !important;
+        background: 'pink' !important;
       }
 
       ::selection,
