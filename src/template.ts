@@ -11,6 +11,17 @@ export default `
     <style type="text/css">
       body {
         margin: 0;
+
+        -webkit-touch-callout: none !important;
+        -webkit-user-select: none !important;
+        -khtml-user-select: none !important;
+        -moz-user-select: none !important;
+        -ms-user-select: none !important;
+        user-select: none !important;
+      }
+
+      '::selection': {
+        background: 'lightskyblue',
       }
 
       #viewer {
@@ -189,9 +200,9 @@ export default `
         });
 
         rendition.on("selected", function (cfiRange, contents) {
-          // rendition.annotations.add("highlight", cfiRange, {}, (e) => {
-          //   console.log("highlight clicked", e.target);
-          // });
+          rendition.annotations.add("underline", cfiRange, {}, (e) => {
+            console.log("underline clicked", e.target);
+          });
           // contents.window.getSelection().removeAllRanges();
 
           book.getRange(cfiRange).then(function (range) {
