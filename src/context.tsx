@@ -492,7 +492,7 @@ const ReaderProvider: React.FC = ({ children }) => {
       data ?? {}
     )}, ${JSON.stringify(
       callback ? callback() : () => {}
-    )}, '${className}', ${JSON.stringify(defaultStyles ?? styles)}); true
+    )}, '${className}', ${JSON.stringify(styles ?? defaultStyles)}); true
     `);
   }
 

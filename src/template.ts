@@ -208,20 +208,20 @@ export default `
           // contents.window.getSelection().removeAllRanges();
 
           // Get Selection
-          sel = contents.window.getSelection()();
-          if (sel.rangeCount && sel.getRangeAt) {
-            range = sel.getRangeAt(0);
-          }
-          // Set design mode to on
-          contents.document.designMode = "on";
-          if (range) {
-            sel.removeAllRanges();
-            sel.addRange(range);
-          }
-          // Colorize text
-          contents.document.execCommand("ForeColor", false, "red");
-          // Set design mode to off
-          contents.document.designMode = "off";
+          // sel = contents.window.getSelection()();
+          // if (sel.rangeCount && sel.getRangeAt) {
+          //   range = sel.getRangeAt(0);
+          // }
+          // // Set design mode to on
+          // contents.document.designMode = "on";
+          // if (range) {
+          //   sel.removeAllRanges();
+          //   sel.addRange(range);
+          // }
+          // // Colorize text
+          // contents.document.execCommand("ForeColor", false, "red");
+          // // Set design mode to off
+          // contents.document.designMode = "off";
 
           book.getRange(cfiRange).then(function (range) {
             if (range) {
