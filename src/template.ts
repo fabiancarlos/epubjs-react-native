@@ -20,9 +20,14 @@ export default `
         user-select: none;
       }
 
+      .marked {
+        fill: 'blue';
+        background: 'pink',
+      }
+
       ::selection,
       ::-moz-selection {
-        background: 'yellow',
+        background: 'pink',
         color: blue;
       }
 

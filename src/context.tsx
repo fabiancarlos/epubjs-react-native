@@ -485,7 +485,7 @@ const ReaderProvider: React.FC = ({ children }) => {
     className?: string,
     styles?: any
   ) {
-    const defaultStyles = { fill: 'yellow' };
+    const defaultStyles = { fill: 'red' };
 
     book.current?.injectJavaScript(`
       rendition.annotations.add('${type}', '${cfiRange}', ${JSON.stringify(
