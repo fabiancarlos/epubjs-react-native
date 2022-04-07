@@ -272,7 +272,7 @@ export default `
                 type: 'onSelected',
                 cfiRange: cfiRange,
                 text: range.toString(),
-                coords: coords
+                coords: oRect
               }));
             }
           });
