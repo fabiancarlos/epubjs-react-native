@@ -207,21 +207,21 @@ export default `
           });
           // contents.window.getSelection().removeAllRanges();
 
-          let frame = contents.document.defaultView.frameElement
-          let selection = contents.window.getSelection();
-          let selectedRange = selection.getRangeAt(0);
-          // let coords = getRect(selectedRange, frame);
+          var frame = contents.document.defaultView.frameElement
+          var selection = contents.window.getSelection();
+          var selectedRange = selection.getRangeAt(0);
+          // var coords = getRect(selectedRange, frame);
           // const { left, right, top, bottom } = coords;
 
           book.getRange(cfiRange).then(function (range) {
-            let coords = getRect(range, frame);
+            var coords = getRect(range, frame);
 
             if (range) {
               window.ReactNativeWebView.postMessage(JSON.stringify({
                 type: 'onSelected',
                 cfiRange: cfiRange,
                 text: range.toString(),
-                coords: { x: 1, y: 2 }
+                coords: '{ x: 1, y: 2 }'
               }));
             }
           });
