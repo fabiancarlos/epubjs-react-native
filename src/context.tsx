@@ -376,7 +376,7 @@ const ReaderContext = createContext<ReaderContextProps>({
   progress: 0,
   locations: [],
   pageList: '',
-  coords: '',
+  selectedCoords: '',
   isLoading: false,
 
   searchResults: [],
@@ -439,8 +439,8 @@ const ReaderProvider: React.FC = ({ children }) => {
     dispatch({ type: Types.SET_PAGE_LIST, payload: pageList });
   }
 
-  function setCoords(coords: string) {
-    dispatch({ type: Types.SET_COORDS, payload: coords });
+  function setCoords(selectedCoords: string) {
+    dispatch({ type: Types.SET_selectedCoords, payload: selectedCoords });
   }
 
   function setLocations(locations: ePubCfi[]) {
@@ -564,7 +564,7 @@ const ReaderProvider: React.FC = ({ children }) => {
         progress: state.progress,
         locations: state.locations,
         pageList: state.pageList,
-        coords: state.coords,
+        selectedCoords: state.selectedCoords,
         isLoading: state.isLoading,
 
         searchResults: state.searchResults,
