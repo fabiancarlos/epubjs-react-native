@@ -157,7 +157,7 @@ export interface ReaderProps {
    * @param {SelectedText} selectedText
    * @returns {void} void
    */
-  onSelected?: (selectedText: string, cfiRange: ePubCfi, selectedCoords: string) => void;
+  onSelected?: (selectedText: string, cfiRange: ePubCfi, selectedCoords: any) => void;
   /**
    * Called when marked text is pressed
    * @param {SelectedText} selectedText
