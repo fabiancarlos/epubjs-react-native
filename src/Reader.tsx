@@ -156,9 +156,9 @@ export function Reader({
     }
 
     if (type === 'onSelected') {
-      const { cfiRange, text } = parsedEvent;
+      const { cfiRange, text, coords } = parsedEvent;
 
-      return onSelected(text, cfiRange);
+      return onSelected(text, cfiRange, coords);
     }
 
     if (type === 'onMarkPressed') {

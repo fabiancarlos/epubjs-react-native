@@ -11,26 +11,6 @@ export default `
     <style type="text/css">
       body {
         margin: 0;
-
-        -webkit-touch-callout: none;
-        -webkit-user-select: none;
-        -khtml-user-select: none;
-        -moz-user-select: none;
-        -ms-user-select: none;
-        user-select: none;
-      }
-
-      .marked {
-        color: '#b45';
-        background-color: '#3db';
-        fill: 'blue' !important;
-        background: 'pink' !important;
-      }
-
-      ::selection,
-      ::-moz-selection {
-        background: 'pink',
-        color: blue;
       }
 
       #viewer {
@@ -65,6 +45,51 @@ export default `
 
       // rendition.themes.register({ myTheme: window.THEME });
       // rendition.themes.select('myTheme');
+
+      function getSelectionCoords() {
+        var sel = document.selection, range, rect;
+        var x = 0, y = 0;
+        if (sel) {
+            if (sel.type != "Control") {
+                range = sel.createRange();
+                range.collapse(true);
+                x = range.boundingLeft;
+                y = range.boundingTop;
+            }
+        } else if (window.getSelection) {
+            sel = window.getSelection();
+            if (sel.rangeCount) {
+                range = sel.getRangeAt(0).cloneRange();
+                if (range.getClientRects) {
+                    range.collapse(true);
+                    if (range.getClientRects().length>0){
+                        rect = range.getClientRects()[0];
+                        x = rect.left;
+                        y = rect.top;
+                    }
+                }
+                // Fall back to inserting a temporary element
+                if (x == 0 && y == 0) {
+                    var span = document.createElement("span");
+                    if (span.getClientRects) {
+                        // Ensure span has dimensions and position by
+                        // adding a zero-width space character
+                        span.appendChild( document.createTextNode("\u200b") );
+                        range.insertNode(span);
+                        rect = span.getClientRects()[0];
+                        x = rect.left;
+                        y = rect.top;
+                        var spanParent = span.parentNode;
+                        spanParent.removeChild(span);
+
+                        // Glue any broken text nodes back together
+                        spanParent.normalize();
+                    }
+                }
+            }
+        }
+        return { x: x, y: y };
+      }
 
       book.ready
         .then(function () {
@@ -214,6 +239,13 @@ export default `
           });
           // contents.window.getSelection().removeAllRanges();
 
+          let selection = contents.window.getSelection();
+          let oRange = selection.getRangeAt(0); //get the text range
+          let oRect = oRange.getBoundingClientRect();
+
+          console.log("oRange >>>", oRange);
+          console.log("oRect >>>", oRect);
+
           // Get Selection
           // sel = contents.window.getSelection()();
           // if (sel.rangeCount && sel.getRangeAt) {
@@ -230,12 +262,17 @@ export default `
           // // Set design mode to off
           // contents.document.designMode = "off";
 
+          console.log(">>>> EPUBJS <<<<< getSelectionCoords === ", getSelectionCoords());
+
+          let coords = getSelectionCoords();
+
           book.getRange(cfiRange).then(function (range) {
             if (range) {
               window.ReactNativeWebView.postMessage(JSON.stringify({
                 type: 'onSelected',
                 cfiRange: cfiRange,
                 text: range.toString(),
+                coords: coords
               }));
             }
           });
