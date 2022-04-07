@@ -48,6 +48,7 @@ export function Reader({
     setCurrentLocation,
     setProgress,
     setPageList,
+    setCoords,
     setLocations,
     setAtStart,
     setAtEnd,
@@ -157,6 +158,7 @@ export function Reader({
 
     if (type === 'onSelected') {
       const { cfiRange, text, coords } = parsedEvent;
+      setCoords(coords);
 
       return onSelected(text, cfiRange, coords);
     }

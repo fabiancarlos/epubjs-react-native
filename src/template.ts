@@ -210,11 +210,11 @@ export default `
           var frame = contents.document.defaultView.frameElement
           var selection = contents.window.getSelection();
           var selectedRange = selection.getRangeAt(0);
-          // var coords = getRect(selectedRange, frame);
+          var coords = getRect(selectedRange, frame);
           // const { left, right, top, bottom } = coords;
 
           book.getRange(cfiRange).then(function (range) {
-            var coords = getRect(range, frame);
+            // var coords = getRect(range, frame);
 
             if (range) {
               window.ReactNativeWebView.postMessage(JSON.stringify({

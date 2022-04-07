@@ -15,12 +15,18 @@ export default function App() {
 
 function Book() {
   const { width, height } = useWindowDimensions();
+  console.log("DUDE");
   return (
     <View>
       <Reader
         src={{ uri: 'https://s3.amazonaws.com/moby-dick/OPS/package.opf' }}
         width={width}
         height={height}
+        onStarted={() => console.log("onStarted")}
+        onReady={(totalLocations, currentLocation, progress, pageList) => {
+          console.log("onReady", totalLocations, currentLocation, progress, pageList);
+        }}
+        onSelected={(selectedText, cfiRange, coords) => console.log(selectedText, cfiRange, coords) }
       />
     </View>
   );

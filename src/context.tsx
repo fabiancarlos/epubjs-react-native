@@ -32,6 +32,7 @@ enum Types {
   SET_PROGRESS = 'SET_PROGRESS',
   SET_LOCATIONS = 'SET_LOCATIONS',
   SET_PAGE_LIST = 'SET_PAGE_LIST',
+  SET_COORDS = 'SET_COORDS',
   SET_IS_LOADING = 'SET_IS_LOADING',
   SET_SEARCH_RESULTS = 'SET_SEARCH_RESULTS',
 }
@@ -48,6 +49,7 @@ type BookPayload = {
   [Types.SET_PROGRESS]: number;
   [Types.SET_LOCATIONS]: ePubCfi[];
   [Types.SET_PAGE_LIST]: string;
+  [Types.SET_COORDS]: string;
   [Types.SET_IS_LOADING]: boolean;
   [Types.SET_SEARCH_RESULTS]: SearchResult[];
 };
@@ -66,6 +68,7 @@ type InitialState = {
   progress: number;
   locations: ePubCfi[];
   pageList: string;
+  coords: string;
   isLoading: boolean;
   searchResults: SearchResult[];
 };
@@ -108,6 +111,7 @@ const initialState: InitialState = {
   progress: 0,
   locations: [],
   pageList: '',
+  coords: '',
   isLoading: false,
   searchResults: [],
 };
@@ -169,6 +173,11 @@ function bookReducer(state: InitialState, action: BookActions): InitialState {
         ...state,
         pageList: action.payload,
       };
+    case Types.SET_COORDS:
+      return {
+        ...state,
+        coords: action.payload,
+      };
     case Types.SET_IS_LOADING:
       return {
         ...state,
@@ -192,6 +201,7 @@ export interface ReaderContextProps {
   setCurrentLocation: (location: Location) => void;
   setProgress: (progress: number) => void;
   setPageList: (pageList: string) => void;
+  setCoords: (coords: string) => void;
   setLocations: (locations: ePubCfi[]) => void;
   setIsLoading: (isLoading: boolean) => void;
 
@@ -312,6 +322,8 @@ export interface ReaderContextProps {
 
   pageList: string;
 
+  coords: string;
+
   /**
    * Indicates if the book is loading
    * @returns {boolean} {@link boolean}
@@ -335,6 +347,7 @@ const ReaderContext = createContext<ReaderContextProps>({
   setCurrentLocation: () => {},
   setProgress: () => {},
   setPageList: () => {},
+  setCoords: () => {},
   setLocations: () => {},
   setIsLoading: () => {},
 
@@ -363,6 +376,7 @@ const ReaderContext = createContext<ReaderContextProps>({
   progress: 0,
   locations: [],
   pageList: '',
+  coords: '',
   isLoading: false,
 
   searchResults: [],
@@ -423,6 +437,10 @@ const ReaderProvider: React.FC = ({ children }) => {
 
   function setPageList(pageList: string) {
     dispatch({ type: Types.SET_PAGE_LIST, payload: pageList });
+  }
+
+  function setCoords(coords: string) {
+    dispatch({ type: Types.SET_COORDS, payload: coords });
   }
 
   function setLocations(locations: ePubCfi[]) {
@@ -518,6 +536,7 @@ const ReaderProvider: React.FC = ({ children }) => {
         setProgress,
         setLocations,
         setPageList,
+        setCoords,
         setIsLoading,
 
         goToLocation,
@@ -545,6 +564,7 @@ const ReaderProvider: React.FC = ({ children }) => {
         progress: state.progress,
         locations: state.locations,
         pageList: state.pageList,
+        coords: state.coords,
         isLoading: state.isLoading,
 
         searchResults: state.searchResults,
