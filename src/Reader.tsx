@@ -273,6 +273,7 @@ export function Reader({
             <TouchableWithoutFeedback onPress={handleDoublePress}>
               <WebView
                 ref={book}
+                cacheEnabled={false}
                 source={{ html: template }}
                 showsVerticalScrollIndicator={false}
                 javaScriptEnabled
