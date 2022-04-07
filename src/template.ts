@@ -209,29 +209,9 @@ export default `
 
           let frame = contents.document.defaultView.frameElement
           let selection = contents.window.getSelection();
-          let range = selection.getRangeAt(0);
-          let coords = getRect(range, frame);
+          let selectedRange = selection.getRangeAt(0);
+          let coords = getRect(selectedRange, frame);
           // const { left, right, top, bottom } = coords;
-          // let oRect = range.getBoundingClientRect();
-
-          console.log("oRange >>>", oRange);
-          console.log("oRect >>>", oRect);
-
-          // Get Selection
-          // sel = contents.window.getSelection()();
-          // if (sel.rangeCount && sel.getRangeAt) {
-          //   range = sel.getRangeAt(0);
-          // }
-          // // Set design mode to on
-          // contents.document.designMode = "on";
-          // if (range) {
-          //   sel.removeAllRanges();
-          //   sel.addRange(range);
-          // }
-          // // Colorize text
-          // contents.document.execCommand("ForeColor", false, "red");
-          // // Set design mode to off
-          // contents.document.designMode = "off";
 
           book.getRange(cfiRange).then(function (range) {
             if (range) {
