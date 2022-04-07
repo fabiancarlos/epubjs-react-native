@@ -114,7 +114,7 @@ export interface ReaderProps {
     totalLocations: number,
     currentLocation: Location,
     progress: number,
-    pageList: string,
+    pageList: string
   ) => void;
   /**
    * Called once book has not been displayed
@@ -157,7 +157,11 @@ export interface ReaderProps {
    * @param {SelectedText} selectedText
    * @returns {void} void
    */
-  onSelected?: (selectedText: string, cfiRange: ePubCfi, selectedCoords: any) => void;
+  onSelected?: (
+    selectedText: string,
+    cfiRange: ePubCfi,
+    selectedCoords: any
+  ) => void;
   /**
    * Called when marked text is pressed
    * @param {SelectedText} selectedText

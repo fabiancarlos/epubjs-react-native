@@ -99,7 +99,8 @@ export function Reader({
     }
 
     if (type === 'onReady') {
-      const { totalLocations, currentLocation, progress, pageList } = parsedEvent;
+      const { totalLocations, currentLocation, progress, pageList } =
+        parsedEvent;
       setIsLoading(false);
       setTotalLocations(totalLocations);
       setCurrentLocation(currentLocation);

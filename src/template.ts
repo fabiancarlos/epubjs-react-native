@@ -220,7 +220,7 @@ export default `
               window.ReactNativeWebView.postMessage(JSON.stringify({
                 type: 'onSelected',
                 cfiRange: cfiRange,
-                text: range.toString(),
+                text: 'tuts tuts',
                 selectedCoords: 'pow'
               }));
             }
