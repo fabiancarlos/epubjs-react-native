@@ -221,7 +221,7 @@ export default `
                 type: 'onSelected',
                 cfiRange: cfiRange,
                 text: range.toString(),
-                coords: 'pow'
+                selectedCoords: 'pow'
               }));
             }
           });

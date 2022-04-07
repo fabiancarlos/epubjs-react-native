@@ -157,10 +157,10 @@ export function Reader({
     }
 
     if (type === 'onSelected') {
-      const { cfiRange, text, coords } = parsedEvent;
-      setCoords(coords);
+      const { cfiRange, text, selectedCoords } = parsedEvent;
+      setCoords(selectedCoords);
 
-      return onSelected(text, cfiRange, coords);
+      return onSelected(text, cfiRange, selectedCoords);
     }
 
     if (type === 'onMarkPressed') {

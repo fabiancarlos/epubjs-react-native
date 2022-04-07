@@ -68,7 +68,7 @@ type InitialState = {
   progress: number;
   locations: ePubCfi[];
   pageList: string;
-  coords: string;
+  selectedCoords: string;
   isLoading: boolean;
   searchResults: SearchResult[];
 };
@@ -111,7 +111,7 @@ const initialState: InitialState = {
   progress: 0,
   locations: [],
   pageList: '',
-  coords: '',
+  selectedCoords: '',
   isLoading: false,
   searchResults: [],
 };
@@ -176,7 +176,7 @@ function bookReducer(state: InitialState, action: BookActions): InitialState {
     case Types.SET_COORDS:
       return {
         ...state,
-        coords: action.payload,
+        selectedCoords: action.payload,
       };
     case Types.SET_IS_LOADING:
       return {
@@ -201,7 +201,7 @@ export interface ReaderContextProps {
   setCurrentLocation: (location: Location) => void;
   setProgress: (progress: number) => void;
   setPageList: (pageList: string) => void;
-  setCoords: (coords: string) => void;
+  setCoords: (selectedCoords: string) => void;
   setLocations: (locations: ePubCfi[]) => void;
   setIsLoading: (isLoading: boolean) => void;
 
@@ -322,7 +322,7 @@ export interface ReaderContextProps {
 
   pageList: string;
 
-  coords: string;
+  selectedCoords: string;
 
   /**
    * Indicates if the book is loading
