@@ -440,7 +440,7 @@ const ReaderProvider: React.FC = ({ children }) => {
   }
 
   function setCoords(selectedCoords: string) {
-    dispatch({ type: Types.SET_selectedCoords, payload: selectedCoords });
+    dispatch({ type: Types.SET_COORDS, payload: selectedCoords });
   }
 
   function setLocations(locations: ePubCfi[]) {
