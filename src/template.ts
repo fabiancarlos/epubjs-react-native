@@ -29,6 +29,7 @@ export default `
 
     <script>
       var book;
+      var timeoutSelection;
 
       if (window.BOOK_BASE64) {
         book = ePub(window.BOOK_BASE64, { encoding: "base64" });
@@ -224,6 +225,9 @@ export default `
                 selectedCoords: coords
               }));
             }
+
+            clearTimeout(timeoutSelection);
+            timeoutSelection = setTimeout(() => selection.removeAllRanges(), 1000);
           });
         });
 
