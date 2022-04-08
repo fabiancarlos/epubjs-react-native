@@ -203,9 +203,9 @@ export default `
         });
 
         rendition.on("selected", function (cfiRange, contents) {
-          // rendition.annotations.add("underline", cfiRange, {}, (e) => {
-          //   console.log("underline clicked", e.target);
-          // });
+          rendition.annotations.add("underline", cfiRange, {}, (e) => {
+            console.log("underline clicked", e.target);
+          });
           // contents.window.getSelection().removeAllRanges();
 
           var frame = contents.document.defaultView.frameElement
