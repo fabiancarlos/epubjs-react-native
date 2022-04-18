@@ -227,7 +227,7 @@ export default `
             }
 
             clearTimeout(timeoutSelection);
-            timeoutSelection = setTimeout(() => selection.removeAllRanges(), 500);
+            timeoutSelection = setTimeout(() => selection.removeAllRanges(), 900);
           });
         });
 
