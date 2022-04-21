@@ -226,8 +226,8 @@ export default `
               }));
             }
 
-            clearTimeout(timeoutSelection);
-            timeoutSelection = setTimeout(() => selection.removeAllRanges(), 900);
+            // clearTimeout(timeoutSelection);
+            // timeoutSelection = setTimeout(() => selection.removeAllRanges(), 900);
           });
         });
 
