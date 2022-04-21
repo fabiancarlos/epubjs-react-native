@@ -203,11 +203,11 @@ export default `
           }));
         });
 
-        rendition.on("touchstart", function (cfiRange, contents) {
+        rendition.on("touchstart", function (event) {
 
         });
 
-        rendition.on("touchend", function (cfiRange, contents) {
+        rendition.on("touchend", function (event) {
 
           if (globalSelection) {
             globalSelection.removeAllRanges();
