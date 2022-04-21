@@ -30,6 +30,7 @@ export default `
     <script>
       var book;
       var timeoutSelection;
+      var globalSelection;
 
       if (window.BOOK_BASE64) {
         book = ePub(window.BOOK_BASE64, { encoding: "base64" });
@@ -202,6 +203,17 @@ export default `
           }));
         });
 
+        rendition.on("touchstart", function (cfiRange, contents) {
+
+        });
+
+        rendition.on("touchend", function (cfiRange, contents) {
+
+          if (globalSelection) {
+            globalSelection.removeAllRanges();
+          }
+        });
+
         rendition.on("selected", function (cfiRange, contents) {
           rendition.annotations.add("underline", cfiRange, {}, (e) => {
             console.log("underline clicked", e.target);
@@ -210,6 +222,7 @@ export default `
 
           var frame = contents.document.defaultView.frameElement
           var selection = contents.window.getSelection();
+          globalSelection = selection;
           var selectedRange = selection.getRangeAt(0);
           var coords = getRect(selectedRange, frame);
           // const { left, right, top, bottom } = coords;
