@@ -211,7 +211,7 @@ export default `
           clearTimeout(timeoutSelection);
 
           if (globalSelection) {
-            timeoutSelection = setTimeout(() => globalSelection.removeAllRanges(), 400);
+            timeoutSelection = setTimeout(() => globalSelection.removeAllRanges(), 1200);
           }
         });
 
