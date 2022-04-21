@@ -208,9 +208,10 @@ export default `
         });
 
         rendition.on("touchend", function (event) {
+          clearTimeout(timeoutSelection);
 
           if (globalSelection) {
-            globalSelection.removeAllRanges();
+            timeoutSelection = setTimeout(() => globalSelection.removeAllRanges(), 900);
           }
         });
 
@@ -239,7 +240,7 @@ export default `
               }));
             }
 
-            // clearTimeout(timeoutSelection);
+            clearTimeout(timeoutSelection);
             // timeoutSelection = setTimeout(() => selection.removeAllRanges(), 900);
           });
         });
