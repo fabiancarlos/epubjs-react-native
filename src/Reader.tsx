@@ -84,11 +84,11 @@ export function Reader({
   }
 
   // disable selection menu default (Copy, Share)
-  injectedJS += `
-    document.body.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)';
-    document.body.style.webkitLineClamp = 'none';
-    document.body.style.userSelect = 'none';
-  `;
+  // injectedJS += `
+  //   document.body.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)';
+  //   document.body.style.webkitLineClamp = 'none';
+  //   document.body.style.userSelect = 'none';
+  // `;
 
   function onMessage(event: WebViewMessageEvent) {
     let parsedEvent = JSON.parse(event.nativeEvent.data);
