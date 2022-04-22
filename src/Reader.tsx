@@ -274,6 +274,7 @@ export function Reader({
               <WebView
                 ref={book}
                 cacheEnabled={false}
+                menuItems={[]}
                 source={{ html: template }}
                 showsVerticalScrollIndicator={false}
                 javaScriptEnabled
