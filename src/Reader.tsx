@@ -30,6 +30,7 @@ export function Reader({
   onFinish = () => {},
   onPress = () => {},
   onDoublePress = () => {},
+  onPressMark = () => {},
   width,
   height,
   initialLocation,
@@ -281,7 +282,15 @@ export function Reader({
               <WebView
                 ref={book}
                 cacheEnabled={false}
-                menuItems={[]}
+                menuItems={[{ label: 'Destacar', key: 'mark' }]}
+                onCustomMenuSelection={(webViewEvent) => {
+                  const { label } = webViewEvent.nativeEvent; // The name of the menu item, i.e. 'Tweet'
+                  const { key } = webViewEvent.nativeEvent; // The key of the menu item, i.e. 'tweet'
+                  const { selectedText } = webViewEvent.nativeEvent; // Text highlighted
+                  if (key == 'mark') {
+                    onPressMark()
+                  }
+                }}
                 source={{ html: template }}
                 showsVerticalScrollIndicator={false}
                 javaScriptEnabled

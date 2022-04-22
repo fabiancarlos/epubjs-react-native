@@ -213,6 +213,11 @@ export interface ReaderProps {
    */
   onDoublePress?: () => void;
   /**
+   * Called when click on mark option menu
+   * @returns {void} void
+   */
+  onPressMark?: () => void;
+  /**
    * width of the ePub Rendition
    * @param {number} width
    */
