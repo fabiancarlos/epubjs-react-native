@@ -11,9 +11,9 @@ export default `
     <style type="text/css">
       body {
         margin: 0;
-        -webkit-line-clamp: none;
-        -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        user-select: none;
+        // -webkit-line-clamp: none;
+        // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+        // user-select: none;
       }
 
       #viewer {
