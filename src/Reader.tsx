@@ -83,6 +83,13 @@ export function Reader({
     throw new Error('src must be a base64 or uri');
   }
 
+  // disable selection menu default (Copy, Share)
+  injectedJS += `
+    document.body.style.webkitTapHighlightColor = 'rgba(0, 0, 0, 0)';
+    document.body.style.webkitLineClamp = 'none';
+    document.body.style.userSelect = 'none';
+  `;
+
   function onMessage(event: WebViewMessageEvent) {
     let parsedEvent = JSON.parse(event.nativeEvent.data);
 
