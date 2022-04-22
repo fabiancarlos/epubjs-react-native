@@ -283,7 +283,7 @@ export function Reader({
                 ref={book}
                 cacheEnabled={false}
                 menuItems={[{ label: 'Destacar', key: 'mark' }]}
-                onCustomMenuSelection={(webViewEvent) => {
+                onCustomMenuSelection={() => {
                   // const { label } = webViewEvent.nativeEvent; // The name of the menu item, i.e. 'Tweet'
                   // const { key } = webViewEvent.nativeEvent; // The key of the menu item, i.e. 'tweet'
                   // const { selectedText } = webViewEvent.nativeEvent; // Text highlighted
