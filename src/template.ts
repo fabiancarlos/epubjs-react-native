@@ -17,7 +17,8 @@ export default `
       }
 
       ::selection{
-        background: #999db3;
+        background-color: #999db3;
+        fill: blue;
         color: #000000;
       }
 
@@ -224,6 +225,13 @@ export default `
         });
 
         rendition.on("selected", function (cfiRange, contents) {
+          clearTimeout(timeoutSelection);
+          timeoutSelection = setTimeout(function() => {
+            rendition.annotations.add("underline", cfiRange, {}, (e) => {
+              console.log("underline clicked", e.target);
+            });
+          }, 900);
+
           // rendition.annotations.add("underline", cfiRange, {}, (e) => {
           //   console.log("underline clicked", e.target);
           // });
