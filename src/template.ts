@@ -226,16 +226,16 @@ export default `
 
         rendition.on("selected", function (cfiRange, contents) {
           clearTimeout(timeoutSelection);
-          let thatRendition = rendition;
-          timeoutSelection = setTimeout(() => {
-            thatRendition.annotations.add("underline", cfiRange, {}, (e) => {
-              console.log("underline clicked", e.target);
-            }, '', {"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"});
-          }, 400);
+          // let thatRendition = rendition;
+          // timeoutSelection = setTimeout(() => {
+          //   thatRendition.annotations.add("underline", cfiRange, {}, (e) => {
+          //     console.log("underline clicked", e.target);
+          //   }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
+          // }, 400);
 
-          // rendition.annotations.add("underline", cfiRange, {}, (e) => {
-          //   console.log("underline clicked", e.target);
-          // });
+          rendition.annotations.add("highlight", cfiRange, {}, (e) => {
+            console.log("highlight clicked", e.target);
+          }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
           // contents.window.getSelection().removeAllRanges();
 
           var frame = contents.document.defaultView.frameElement
