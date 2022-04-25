@@ -11,15 +11,18 @@ export default `
     <style type="text/css">
       body {
         margin: 0;
-        // -webkit-line-clamp: none;
-        // -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-        // user-select: none;
       }
 
       ::selection{
         background-color: #999db3;
         fill: blue;
         color: #000000;
+      }
+
+      .epubjs-ul line {
+        stroke: #aaa;
+        fill: #aaa;
+        stroke-width: 1;
       }
 
       #viewer {
@@ -230,17 +233,19 @@ export default `
           let thatRendition = rendition;
 
           previousMarks.push(cfiRange);
-          previousMarks.map(mark => rendition.annotations.remove(mark, "highlight") );
+          previousMarks.map(mark => rendition.annotations.remove(mark, "underline") );
 
           timeoutSelection = setTimeout(() => {
-            thatRendition.annotations.add("highlight", cfiRange, {}, (e) => {
-              console.log("highlight clicked", e.target);
-            }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
+            // thatRendition.annotations.add("highlight", cfiRange, {}, null, 'selected', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
+
+            rendition.annotations.add("underline", cfiRange, {}, (e) => {
+              console.log("underline clicked", e.target);
+            });
           }, 400);
 
           // rendition.annotations.add("underline", cfiRange, {}, (e) => {
           //   console.log("underline clicked", e.target);
-          // }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
+          // });
           // contents.window.getSelection().removeAllRanges();
 
           var frame = contents.document.defaultView.frameElement
