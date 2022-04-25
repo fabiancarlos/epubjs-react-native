@@ -16,6 +16,11 @@ export default `
         // user-select: none;
       }
 
+      ::selection{
+        background: #999db3;
+        color: #000000;
+      }
+
       #viewer {
         height: 100vh;
         width: 100vw;
