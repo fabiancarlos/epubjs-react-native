@@ -230,11 +230,11 @@ export default `
           let thatRendition = rendition;
 
           previousMarks.push(cfiRange);
-          previousMarks.map(mark => rendition.annotations.remove(mark, "underline") );
+          previousMarks.map(mark => rendition.annotations.remove(mark, "highlight") );
 
           timeoutSelection = setTimeout(() => {
-            thatRendition.annotations.add("underline", cfiRange, {}, (e) => {
-              console.log("underline clicked", e.target);
+            thatRendition.annotations.add("highlight", cfiRange, {}, (e) => {
+              console.log("highlight clicked", e.target);
             }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
           }, 400);
 
