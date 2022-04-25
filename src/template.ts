@@ -39,6 +39,7 @@ export default `
     <script>
       var book;
       var timeoutSelection;
+      var previousMarks = [];
       var globalSelection;
 
       if (window.BOOK_BASE64) {
@@ -226,16 +227,20 @@ export default `
 
         rendition.on("selected", function (cfiRange, contents) {
           clearTimeout(timeoutSelection);
-          // let thatRendition = rendition;
-          // timeoutSelection = setTimeout(() => {
-          //   thatRendition.annotations.add("underline", cfiRange, {}, (e) => {
-          //     console.log("underline clicked", e.target);
-          //   }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
-          // }, 400);
+          let thatRendition = rendition;
 
-          rendition.annotations.add("highlight", cfiRange, {}, (e) => {
-            console.log("highlight clicked", e.target);
-          }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
+          previousMarks.push(cfiRange);
+          previousMarks.map(mark => { rendition.annotations.remove(mark) });
+
+          timeoutSelection = setTimeout(() => {
+            thatRendition.annotations.add("highlight", cfiRange, {}, (e) => {
+              console.log("highlight clicked", e.target);
+            }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
+          }, 200);
+
+          // rendition.annotations.add("underline", cfiRange, {}, (e) => {
+          //   console.log("underline clicked", e.target);
+          // }, '', JSON.stringify({"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"}) );
           // contents.window.getSelection().removeAllRanges();
 
           var frame = contents.document.defaultView.frameElement
