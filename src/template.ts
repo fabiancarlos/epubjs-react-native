@@ -226,8 +226,9 @@ export default `
 
         rendition.on("selected", function (cfiRange, contents) {
           clearTimeout(timeoutSelection);
-          timeoutSelection = setTimeout(function() => {
-            rendition.annotations.add("underline", cfiRange, {}, (e) => {
+          let thatRendition = rendition;
+          timeoutSelection = setTimeout(() => {
+            thatRendition.annotations.add("underline", cfiRange, {}, (e) => {
               console.log("underline clicked", e.target);
             });
           }, 900);
