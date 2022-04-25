@@ -230,8 +230,8 @@ export default `
           timeoutSelection = setTimeout(() => {
             thatRendition.annotations.add("underline", cfiRange, {}, (e) => {
               console.log("underline clicked", e.target);
-            });
-          }, 900);
+            }, '', {"fill": '#222222', "color": '#fff', "fill-opacity": "0.6", "mix-blend-mode": "multiply"});
+          }, 400);
 
           // rendition.annotations.add("underline", cfiRange, {}, (e) => {
           //   console.log("underline clicked", e.target);
